@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motorcycle Route Planner</title>
+</head>
+<body>
+    <h1>Motorcycle Route Planner</h1>
+    <form action="/generate_route" method="post">
+        <label for="road_type">Road Type:</label>
+        <select name="road_type" id="road_type">
+            <option value="paved">Paved</option>
+            <option value="dirt">Dirt</option>
+            <option value="gravel">Gravel</option>
+        </select><br><br>
+        <label for="twistiness">Twistiness:</label>
+        <select name="twistiness" id="twistiness">
+            <option value="1">Low</option>
+            <option value="5" selected>Medium</option>
+            <option value="10">High</option>
+        </select><br><br>
+        <label for="trip_type">Trip Type:</label>
+        <select name="trip_type" id="trip_type">
+            <option value="round_trip">Round Trip</option>
+            <option value="point_to_point">Point to Point</option>
+        </select><br><br>
+        <label for="length">Length (miles):</label>
+        <input type="number" name="length" id="length" min="1" value="100"><br><br>
+        <label for="start_address">Starting Address:</label>
+        <input type="text" name="start_address" id="start_address" required><br><br>
+        {% if trip_type == "point_to_point" %}
+            <label for="end_address">Ending Address:</label>
+            <input type="text" name="end_address" id="end_address" required><br><br>
+        {% endif %}
+        <input type="submit" value="Generate Route">
+    </form>
+</body>
+</html>
